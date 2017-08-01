@@ -14,7 +14,7 @@ import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
     `
   ],
   template: `
-    <div class="ui dimmer modals page trans-fadeout" style="display: block !important" 
+    <div class="ui dimmer modals page trans-fadeout" style="display: block !important; height: 100%" 
       [style.visibility] = "_showModal ? 'visible' : 'hidden'"
       [style.opacity] = "_showModal ? '1' : '0'"  
       (click)="closeModal()">
@@ -51,8 +51,12 @@ export class ModalComponent implements ControlValueAccessor {
       document.body.classList.add("dimmed");
       var self = this;
       setTimeout(function () {
-        let windowHeight = document.body.offsetHeight;
-        let eleHeight = self.element.offsetHeight;
+          let body = document.body;
+          let html = document.documentElement;
+
+          let windowHeight = Math.max( body.scrollHeight, body.offsetHeight,
+              html.clientHeight, html.scrollHeight, html.offsetHeight );
+          let eleHeight = self.element.offsetHeight;
         let top = (windowHeight - eleHeight) / 2;
         self.element.style.top = top + 'px';
       });
