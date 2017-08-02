@@ -9,9 +9,6 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         font-weight: normal !important;
         padding-left: 27px;
       }
-      .ui.checkbox input[disabled] ~ label {
-	    opacity: 1;
-	  }
     `
   ],
   template: `
