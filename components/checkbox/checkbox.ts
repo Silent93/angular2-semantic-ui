@@ -6,7 +6,12 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   styles: [
     ` .ui.checkbox > label {
         cursor: pointer;
+        font-weight: normal !important;
+        padding-left: 27px;
       }
+      .ui.checkbox input[disabled] ~ label {
+	    opacity: 1;
+	  }
     `
   ],
   template: `
